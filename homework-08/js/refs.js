@@ -1,2 +1,2 @@
 import galleryItems from '../images/app.js'
-console.log(app)
+console.log(galleryItems);
