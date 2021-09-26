@@ -1,2 +1,5 @@
-import galleryItems from '../images/app.js'
-console.log(galleryItems);
+export default {
+list: document.querySelector('.js-gallery'),
+modal: document.querySelector('.js-lightbox'),
+button: document.querySelector('.lightbox__button')
+}
