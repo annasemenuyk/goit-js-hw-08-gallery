@@ -41,5 +41,17 @@ function createItems (arrey) {
     .join('')
    }
 const markup = createItems (galleryItems)
-console.log (markup)
+//console.log (markup)
 list.insertAdjacentHTML("afterbegin", markup)
+const options = {
+    root: list,
+    rootMargin:'0px',
+    threshold: 0,
+}
+const observer = new IntersectionObserver (callback, options)
+function callback (entries) {
+    console.log(entries)
+}
+const items = [...list.children]
+console.log(items)
+items.forEach((item)=>{observer.observe(item)})
