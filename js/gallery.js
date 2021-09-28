@@ -1,6 +1,6 @@
 import galleryItems from '../images/app.js'
 //console.log(galleryItems);
-import refs from '../js/refs.js'
+import refs from './js/refs.js'
 //console.log(refs);
 const {list, modal, button, modalClose, modalImage, modalOverlay} =refs;
 //console.log(list, modal, button);
