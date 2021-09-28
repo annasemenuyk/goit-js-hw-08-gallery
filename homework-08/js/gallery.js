@@ -100,7 +100,7 @@ function onEscKeyPress(evt) {
     onModalCloseClick();
   }
 }
-/* //Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
+ //Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
 // вліво
 function onArrowLeftPress (evt) {
   const ARR_LEFT_KEY_CODE = 'ArrowLeft'
@@ -122,12 +122,12 @@ const pressArrowRight = evt.code === ARR_RIGHT_KEY_CODE
 if (pressArrowRight) {
   const sources = galleryItems.map(({ original }) => original)
   let indexOfCurrentImg = sources.indexOf(modalImage.src)
-if (indexOfCurrentImg +1> sources.length-1) {
+if (indexOfCurrentImg +1 > sources.length-1) {
     indexOfCurrentImg = -1
   }
   modalImage.src = sources[indexOfCurrentImg + 1]
   console.log(indexOfCurrentImg +1)
 }
-} */
+} 
 
 
