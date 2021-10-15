@@ -76,7 +76,7 @@ event.preventDefault();// відміна переходу по ссилці
   window.addEventListener('keydown', onArrowRightPress);
 } 
 //Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
-modal.addEventListener('click', onModalCloseClick) 
+button.addEventListener('click', onModalCloseClick) 
 function onModalCloseClick (event){      
   modal.classList.remove('is-open') //закриття модального вікна
   modalImage.src = '' // очищення значення картинки
