@@ -138,3 +138,41 @@ body {
 .lightbox__button:focus {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.lightbox__slider-btn {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(58, 55, 55, 0.5);
+  cursor: pointer;
+  transition: background-color var(--animation-duration) var(--timing-function);
+  outline: none;
+  /* background-image: url('../images/icon-close.svg'); */
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+}
+
+.lightbox__slider-btn-right {
+  right: 10px;
+  background-image: url('../images/icon-arrow-forward.svg');
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+}
+
+.lightbox__slider-btn-left {
+  left: 10px;
+  background-image: url('../images/icon-arrow-backward.svg');
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+}

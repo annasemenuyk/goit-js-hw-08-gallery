@@ -51,10 +51,11 @@ const items = [...list.children]
 //пока грузится изображение, мы не видели предыдущее.
 list.addEventListener('click', onOpenModal)
 function onOpenModal(event) {
-  if (e.target.nodeName === 'LI' || e.target.nodeName === 'A' || e.target.nodeName === 'IMG') {
-event.preventDefault();// відміна переходу по ссилці
+  if (event.target.nodeName === 'LI' || event.target.nodeName === 'A' || event.target.nodeName === 'IMG') {
+  event.preventDefault();// відміна переходу по ссилці
+
   modal.classList.add('is-open') //присвоєння класу відкриття модалки
-  modalImage.src = event.target.dataset.original //заміна значення картинки
+  modalImage.src = event.target.dataset.source //заміна значення картинки
   modalImage.alt = event.target.alt
   window.addEventListener('keydown', onEscKeyPress);
   window.addEventListener('keydown', onArrowLeftPress);
@@ -62,7 +63,7 @@ event.preventDefault();// відміна переходу по ссилці
   }
 } 
 //Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
-button.addEventListener('click', onModalCloseClick) 
+modalClose.addEventListener('click', onModalCloseClick) 
 function onModalCloseClick (event){      
   modal.classList.remove('is-open') //закриття модального вікна
   modalImage.src = '' // очищення значення картинки
@@ -72,12 +73,8 @@ function onModalCloseClick (event){
   window.removeEventListener('keydown', onArrowRightPress);
 }
 //Закрытие модального окна по клику на div.lightbox__overlay.
-buttonOverlay.addEventListener('click', onOverlay)
-// function onOverlay(evt) {
-//   if (evt.currentTarget === evt.target) {
-//     onModalCloseClick();
-//   }
-// }
+modal.addEventListener('click', onModalCloseClick)
+
 //Закрытие модального окна по нажатию клавиши ESC
 function onEscKeyPress(evt) {
   const ESC_KEY_CODE = 'Escape';
@@ -87,6 +84,22 @@ function onEscKeyPress(evt) {
   }
 }
  //Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
+ refs.sliderArrowRight.addEventListener('click', onArrowRightPress);
+ refs.sliderArrowLeft.addEventListener('click', onArrowLeftPress);
+ //вправо
+function onArrowRightPress (evt) {
+const ARR_RIGHT_KEY_CODE = 'ArrowRight';
+const pressArrowRight = evt.code === ARR_RIGHT_KEY_CODE
+if (pressArrowRight) {
+  const sources = galleryItems.map(({ original }) => original)
+  let indexOfCurrentImg = sources.indexOf(modalImage.src)
+if (indexOfCurrentImg +1 > sources.length-1) {
+    indexOfCurrentImg = -1
+  }
+  modalImage.src = sources[indexOfCurrentImg + 1]
+  console.log(indexOfCurrentImg +1)
+}
+} 
 // вліво
 function onArrowLeftPress (evt) {
   const ARR_LEFT_KEY_CODE = 'ArrowLeft'
@@ -101,19 +114,4 @@ function onArrowLeftPress (evt) {
     console.log(indexOfCurrentImg)
   }
 }
-//вправо
-function onArrowRightPress (evt) {
-const ARR_RIGHT_KEY_CODE = 'ArrowRight';
-const pressArrowRight = evt.code === ARR_RIGHT_KEY_CODE
-if (pressArrowRight) {
-  const sources = galleryItems.map(({ original }) => original)
-  let indexOfCurrentImg = sources.indexOf(modalImage.src)
-if (indexOfCurrentImg +1 > sources.length-1) {
-    indexOfCurrentImg = -1
-  }
-  modalImage.src = sources[indexOfCurrentImg + 1]
-  console.log(indexOfCurrentImg +1)
-}
-} 
-
 
