@@ -44,36 +44,22 @@ function createItems (arrey) {
 const markup = createItems (galleryItems)
 //console.log (markup)
 list.insertAdjacentHTML("afterbegin", markup)
-
-/* const options = {
-    root: list,
-    rootMargin:'0px',
-    threshold: 0.5,
-}
-const observer = new IntersectionObserver (callback, options)
-function callback (entries) {
-    //console.log(entries)
-    entries.forEach((entry)=>{
-      console.log(entry)
-      entry.isIntersecting?
-       entry.target.classList.add('is-open')
-      :entry.target.classList.remove('is-open')
-    })
-} */
 const items = [...list.children]
-/* items.forEach((item)=>observer.observe(item)) */
+
 // Відкриття модального вікна Очистка значения атрибута src элемента img.lightbox__image.
 // Это необходимо для того, чтобы при следующем открытии модального окна, 
 //пока грузится изображение, мы не видели предыдущее.
 list.addEventListener('click', onOpenModal)
 function onOpenModal(event) {
+  if (e.target.nodeName === 'LI' || e.target.nodeName === 'A' || e.target.nodeName === 'IMG') {
 event.preventDefault();// відміна переходу по ссилці
   modal.classList.add('is-open') //присвоєння класу відкриття модалки
-  modalImage.src = event.target.dataset.source //заміна значення картинки
+  modalImage.src = event.target.dataset.original //заміна значення картинки
   modalImage.alt = event.target.alt
   window.addEventListener('keydown', onEscKeyPress);
   window.addEventListener('keydown', onArrowLeftPress);
   window.addEventListener('keydown', onArrowRightPress);
+  }
 } 
 //Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
 button.addEventListener('click', onModalCloseClick) 
@@ -86,12 +72,12 @@ function onModalCloseClick (event){
   window.removeEventListener('keydown', onArrowRightPress);
 }
 //Закрытие модального окна по клику на div.lightbox__overlay.
-modalOverlay.addEventListener('click', onOverlay)
-function onOverlay(evt) {
-  if (evt.currentTarget === evt.target) {
-    onModalCloseClick();
-  }
-}
+buttonOverlay.addEventListener('click', onOverlay)
+// function onOverlay(evt) {
+//   if (evt.currentTarget === evt.target) {
+//     onModalCloseClick();
+//   }
+// }
 //Закрытие модального окна по нажатию клавиши ESC
 function onEscKeyPress(evt) {
   const ESC_KEY_CODE = 'Escape';
@@ -100,7 +86,7 @@ function onEscKeyPress(evt) {
     onModalCloseClick();
   }
 }
-/*  //Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
+ //Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
 // вліво
 function onArrowLeftPress (evt) {
   const ARR_LEFT_KEY_CODE = 'ArrowLeft'
@@ -128,6 +114,6 @@ if (indexOfCurrentImg +1 > sources.length-1) {
   modalImage.src = sources[indexOfCurrentImg + 1]
   console.log(indexOfCurrentImg +1)
 }
-}  */
+} 
 
 

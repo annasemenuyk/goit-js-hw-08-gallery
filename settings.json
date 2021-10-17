@@ -1,3 +1,33 @@
 {
     "compile-hero.disable-compile-files-on-did-save-code": false
 }
+{
+    "files.autoSave": "onFocusChange",
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.iconTheme": "vs-minimal",
+    "explorer.confirmDelete": false,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "liveSassCompile.settings.autoprefix": [],
+    "editor.fontSize": 16,
+    "window.zoomLevel": -1,
+    "editor.renderControlCharacters": true,
+    "editor.accessibilityPageSize": 12,
+    "git.autofetch": true,
+    "diffEditor.codeLens": true,
+    "files.associations": {
+        "*.js": "javascript"
+    },
+    "typescript.disableAutomaticTypeAcquisition": true,
+    "liveServer.settings.useWebExt": true,
+    "liveServer.settings.useBrowserPreview": true,
+    "liveServer.settings.donotVerifyTags": true
+}
